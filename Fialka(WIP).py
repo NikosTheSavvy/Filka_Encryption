@@ -31,7 +31,7 @@ class FialkaSimulator:
 
     def create_plugboard(self):
         wiring = {c: c for c in ALPHABET}
-        pairs = random.sample(ALPHABET, 20)  # 10 random swaps
+        pairs = random.sample(ALPHABET, 20)  
         for i in range(0, 20, 2):
             a, b = pairs[i], pairs[i+1]
             wiring[a], wiring[b] = b, a
@@ -69,7 +69,7 @@ class FialkaSimulator:
         return ''.join(self.encrypt_letter(ch) for ch in text if ch in ALPHABET)
 
 def main():
-    # Initialize machine and save starting state
+    
     simulator = FialkaSimulator()
     initial_rotors = deepcopy(simulator.rotors)
     initial_reflector = deepcopy(simulator.reflector)
@@ -86,7 +86,7 @@ def main():
 
         text = input("Enter text (letters A-Z only): ").strip().upper()
 
-        # Reset machine to initial state before each operation
+        
         simulator = FialkaSimulator(
             rotors=initial_rotors,
             reflector=initial_reflector,
@@ -98,7 +98,7 @@ def main():
             result = simulator.encrypt(text)
             print("Encrypted text:", result)
         else:
-            # Decryption is same as encryption with same settings
+            
             result = simulator.encrypt(text)
             print("Decrypted text:", result)
 
